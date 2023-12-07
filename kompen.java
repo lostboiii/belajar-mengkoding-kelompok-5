@@ -87,14 +87,20 @@ public class kompen{
  System.out.println("==========================================================================================================================================");
         }
     static void bayarKompen(){
+        int jamKompen,bayar,id;
+        do {
         viewKompen();
         System.out.println("Masukkan id Yang Ingin Membayar Kompen :");
-        int id = sc.nextInt();
-        System.out.println("Masukkan Jumalh Jam Yan Ingin Dibayar :");
-        int bayar = sc.nextInt();
-        kompenMhs[id][semester] = Integer.toString(Integer.parseInt(kompenMhs[id][semester]) - bayar);
+        id = sc.nextInt();
+        System.out.println("Masukkan Jumlah Jam Yan Ingin Dibayar :");
+        bayar = sc.nextInt();
+        System.out.println("Jam Kompen Tidak Boleh Lebih Dari Jam Alpa!");
+        jamKompen = Integer.parseInt(kompenMhs[id][semester]);
+        } while (bayar>jamKompen);
 
-        System.out.println("success");
+        kompenMhs[id][semester] = Integer.toString(Integer.parseInt(kompenMhs[id][semester]) - bayar);    
+
+        System.out.println("Jam Kompen Sukses Dibayar");
     }
      static void TambahKompen(){
         viewKompen();
