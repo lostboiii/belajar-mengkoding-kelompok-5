@@ -218,7 +218,8 @@ public class kompen{
                 System.out.println("3. Input Mahasiswa");
                 System.out.println("4. Pembayaran Kompen");
                 System.out.println("5. Pergantian Semester Baru");
-                System.out.println("6. Logout");
+                System.out.println("6. Cari Kelas");
+                System.out.println("7. Logout");
                 System.out.println("0. Keluar Program Sistem Kompen");
             }
 
@@ -226,15 +227,12 @@ public class kompen{
             int menu = sc.nextInt();
 
             switch (menu) {
-                case 0:
-                hitungKompen = false;
-                System.out.println("Terima kasih. Program Sistem Kompen keluar.");
-                break;
-                case 1:
-                viewKompen();
-               
-                
-                
+            case 0:
+            hitungKompen = false;
+            System.out.println("Terima kasih. Program Sistem Kompen keluar.");
+            break;
+            case 1:
+            viewKompen();
             break;
             case 2:
             TambahKompen();
@@ -249,10 +247,10 @@ public class kompen{
             tambahSemester();
             break;
             case 6:
-            logout();
+            cariKelas();
             break;
             case 7:
-            cariKelas();
+            logout();
             break;
         default:
             System.out.println("Pilihan Tidak Valid");
