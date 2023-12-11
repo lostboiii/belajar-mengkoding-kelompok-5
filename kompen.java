@@ -9,7 +9,7 @@ public class kompen{
     static double poin_akhir = 0;
     static int  kerja = 0;
     static double[] totalKompenMhs;
-    static String kompenMhs[][] = new String[20][9];
+    static String kompenMhs[][] = new String[20][10];
     static int semester = 1;
 
 
@@ -49,19 +49,22 @@ public class kompen{
                 return false;
             }
         }
-        static void simpanNamaBaru(String nama) {
+        static void simpanNamaBaru(String nama, String kelas) {
             int indeksKosong = -1;
             for (int i = 0; i < kompenMhs.length; i++) {
                 if (kompenMhs[i][0] == null) {
                     indeksKosong = i;
+
                     break;
                 }
             }
             if (indeksKosong != -1) {
                 kompenMhs[indeksKosong][0] = nama;
+                kompenMhs[indeksKosong][9] = kelas;
                 System.out.println("Nama berhasil disimpan di indeks " + indeksKosong);
                 for (int i = 1; i < kompenMhs[indeksKosong].length; i++) {
                     kompenMhs[indeksKosong][i] = "0";
+                     kompenMhs[indeksKosong][9] = kelas;
                 }
             } else {
                 System.out.println("error,array penuh.");
@@ -72,19 +75,21 @@ public class kompen{
             sc.nextLine();
             System.out.println("Masukkan Nama :");
             String namaBaru = sc.nextLine();
-            simpanNamaBaru(namaBaru);
+            System.out.println("Masukkan Kelas :");
+            String kelasBaru = sc.nextLine();
+            simpanNamaBaru(namaBaru,kelasBaru);
         }
         static void viewKompen() {
-            System.out.println("==========================================================================================================================================");
+        System.out.println("===========================================================================================================================================================");
             for (int i = 0; i < kompenMhs.length; i++) {
                 if (kompenMhs[i][0] != null) {
                     for (int j = 0; j < kompenMhs[i].length; j++) {
                         System.out.print(kompenMhs[i][j] + "\t|\t");
                     }
-                    System.out.println("\n-----------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println("\n----------------------------------------------------------------------------------------------------------------------------------------------------------");
                 }
             }
- System.out.println("==========================================================================================================================================");
+        System.out.println("===========================================================================================================================================================");
         }
     static void bayarKompen(){
         int jamKompen,bayar,id;
@@ -102,6 +107,36 @@ public class kompen{
 
         System.out.println("Jam Kompen Sukses Dibayar");
     }
+    static void cariKelas() {
+        sc.nextLine();
+        boolean found = false;
+        System.out.println("Masukkan Kelas Yang Ingin Dicari : ");
+        String cari = sc.nextLine();
+
+        System.out.println("===========================================================================================================================================================");
+        System.out.printf("%-10s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|%-15s|\n", "Nama", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "Kelas");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+        for (int i = 0; i < kompenMhs.length; i++) {
+            if (kompenMhs[i][0] != null && cari.equalsIgnoreCase(kompenMhs[i][9])) {
+                found = true;
+                System.out.printf("%-10s|", kompenMhs[i][0]);
+                for (int j = 1; j < kompenMhs[i].length; j++) {
+                    System.out.printf("%-15s|", kompenMhs[i][j]);
+                }
+                System.out.println();
+                found = true;
+            }
+        }
+
+        System.out.println("===========================================================================================================================================================");
+    
+        if (!found) {
+            System.out.println("Data tidak ditemukan untuk kelas " + cari);
+        }
+    }
+    
+    
      static void TambahKompen(){
         viewKompen();
         System.out.println("Masukkan id Yang Ingin Membayar Kompen :");
@@ -216,6 +251,9 @@ public class kompen{
             case 6:
             logout();
             break;
+            case 7:
+            cariKelas();
+            break;
         default:
             System.out.println("Pilihan Tidak Valid");
             break;
@@ -233,6 +271,7 @@ public class kompen{
            kompenMhs[0][6] = "S6";
            kompenMhs[0][7] = "S7";
            kompenMhs[0][8] = "S8";
+           kompenMhs[0][9] = "Kelas";
     
            kompenMhs[1][0] = "hekal";
            kompenMhs[1][1] = "3";
@@ -243,6 +282,7 @@ public class kompen{
            kompenMhs[1][6] = "0";
            kompenMhs[1][7] = "0";
            kompenMhs[1][8] = "0";
+           kompenMhs[1][9] = "1Z";
             
 
             login();
