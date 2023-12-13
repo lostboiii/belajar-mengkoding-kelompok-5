@@ -18,16 +18,85 @@ public class kompen{
         System.out.flush();
     }
      public static void admin(){
+        boolean hitungKompen = true;
+        do {
         System.out.println("╔════════════════════════════════════════════╗");
         System.out.println("║          Selamat Datang Admin              ║");
         System.out.println("║        Silahkan pilih menu dibawah ini:    ║");
         System.out.println("╚════════════════════════════════════════════╝");
+        System.out.println("");
+        System.out.println("1. List Kompen Pada Kelas ");
+        System.out.println("2. Perhitungan Kompen ");
+        System.out.println("3. Input Mahasiswa");
+        System.out.println("4. Pembayaran Kompen");
+        System.out.println("5. Pergantian Semester Baru");
+        System.out.println("6. Cari Kelas");
+        System.out.println("7. Logout");
+        System.out.println("0. Keluar Program Sistem Kompen");
+        System.out.println("");
+        System.out.println("Masukkan Menu Yang Ingin Dituju : ");
+        int menu = sc.nextInt();
+        
+        
+         switch (menu) {
+            case 0:
+            hitungKompen = false;
+            System.out.println("Terima kasih. Program Sistem Kompen keluar.");
+            break;
+            case 1:
+            viewKompen();
+            break;
+            case 2:
+            TambahKompen();
+            break;
+            case 3:
+            tambahNama();
+            break;
+            case 4:
+            bayarKompen();
+            break;
+            case 5:
+            tambahSemester();
+            break;
+            case 6:
+            cariKelas();
+            break;
+            case 7:
+            logout();
+            break;
+            default:
+            hitungKompen = false;
+            System.out.println("Pilihan Tidak Valid");
+            break;
+    }
+     } while (hitungKompen);
         }
          public static void user(){
+        boolean hitungKompen = true;
+        do{
         System.out.println("╔════════════════════════════════════════════╗");
         System.out.println("║          Selamat Datang User               ║");
         System.out.println("║        Silahkan pilih menu dibawah ini:    ║");
         System.out.println("╚════════════════════════════════════════════╝");
+        System.out.println("");
+        System.out.println("1. List Kompen Pada Kelas ");
+        System.out.println("0. Keluar Program Sistem Kompen");
+        System.out.println("");
+        System.out.println("Masukkan Menu Yang Ingin Dituju : ");
+        int menu = sc.nextInt();
+    
+          switch (menu) {
+            case 0:
+            hitungKompen = false;
+            System.out.println("Terima kasih. Program Sistem Kompen keluar.");
+            break;
+            case 1:
+            viewKompen();
+            break;
+            default:
+            break;
+          }
+           } while (hitungKompen);
         }
         static void tambahSemester() {
             semester++;
@@ -139,7 +208,7 @@ public class kompen{
     
      static void TambahKompen(){
         viewKompen();
-        System.out.println("Masukkan id Yang Ingin Membayar Kompen :");
+        System.out.println("Masukkan id Yang Ingin Ditambah Jam Kompen :");
         int id = sc.nextInt();
         System.out.println("Masukkan Jumlah Jam Alpa :");
         int alpa = sc.nextInt();
@@ -156,7 +225,7 @@ public class kompen{
                 "admin","passadmin","123","123"
             };
             String[] loginUser = {
-                "2341720125", "1"
+                "321", "1"
             };
         System.out.println("===== Sistem Kompen Mahasiswa =====\n");
             int angka = 0;
@@ -178,6 +247,9 @@ public class kompen{
                             nama = "Admin";
                             break;
                         }
+                        else{
+                            System.out.println("Login salah, coba lagi");
+                        }
                     }
                     break;
 
@@ -186,6 +258,9 @@ public class kompen{
                         if (nim.equals(loginUser[i]) && password.equals(loginUser[i + 1])) {
                             sukses = true;
                             break;
+                        }
+                         else{
+                            System.out.println("Login salah, coba lagi");
                         }
                     }
                     break;
@@ -201,62 +276,14 @@ public class kompen{
                 System.out.println("Username atau Password salah. Coba lagi.");
             }
             clear();
-             boolean hitungKompen = true;
-            do{
+
+  
             if (angka==1) {
                 admin();
             } else {
                 user();
             }
-            if (angka == 2) {
-                System.out.println("1. List Kompen Pada Kelas ");
-                System.out.println("0. Keluar Program Sistem Kompen");
-            }
-            else{
-                System.out.println("1. List Kompen Pada Kelas ");
-                System.out.println("2. Perhitungan Kompen ");
-                System.out.println("3. Input Mahasiswa");
-                System.out.println("4. Pembayaran Kompen");
-                System.out.println("5. Pergantian Semester Baru");
-                System.out.println("6. Cari Kelas");
-                System.out.println("7. Logout");
-                System.out.println("0. Keluar Program Sistem Kompen");
-            }
 
-            System.out.println("Masukkan Menu Yang Ingin Dituju : ");
-            int menu = sc.nextInt();
-
-            switch (menu) {
-            case 0:
-            hitungKompen = false;
-            System.out.println("Terima kasih. Program Sistem Kompen keluar.");
-            break;
-            case 1:
-            viewKompen();
-            break;
-            case 2:
-            TambahKompen();
-            break;
-            case 3:
-            tambahNama();
-            break;
-            case 4:
-            bayarKompen();
-            break;
-            case 5:
-            tambahSemester();
-            break;
-            case 6:
-            cariKelas();
-            break;
-            case 7:
-            logout();
-            break;
-        default:
-            System.out.println("Pilihan Tidak Valid");
-            break;
-    }
-} while (hitungKompen);
     }
 
         public static void main(String[] args) {
